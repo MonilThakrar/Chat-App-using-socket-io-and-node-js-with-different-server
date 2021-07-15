@@ -11,13 +11,13 @@ server.listen(3000, () => {
 
 let users = {};
 
-io.on('connection', function (socket) {
+io.on('connection', function(socket) {
     console.log('connected');
     socket.on('new-user-joined', (names) => {
         console.log('new-user-joined', names);
         users[socket.id] = names;
         socket.broadcast.emit('user-joined', names)
-        //console.log('join');
+            //console.log('join');
     })
 
     socket.on('send', message => {
